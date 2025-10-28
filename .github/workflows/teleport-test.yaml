@@ -7,24 +7,26 @@ jobs:
     permissions:
       id-token: write
       contents: read
-    name: example 
+    name: teleport
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+
     - name: Fetch Teleport binaries
       uses: teleport-actions/setup@v1
       with:
         version: auto
         proxy: teleport.exploravis.ddns.net:443
-    - name: Authenticate via GitHub OIDC
+
+    - name: Fetch credentials using Machine ID
       id: auth
       uses: teleport-actions/auth@v2
       with:
         proxy: teleport.exploravis.ddns.net:443
-        oidc: true
-        certificate-ttl: 15m
-
+        token: github-actions-token 
+        certificate-ttl: 1h
+        anonymous-telemetry: 1
     - name: List nodes (tsh)
       run: tsh ls
     - name: List nodes (tctl)
