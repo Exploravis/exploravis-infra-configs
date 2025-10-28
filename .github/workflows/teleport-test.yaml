@@ -2,6 +2,7 @@ on:
   push:
     branches:
     - main
+  workflow_dispatch:
 jobs:
   demo:
     permissions:
@@ -27,6 +28,7 @@ jobs:
         token: github-actions-token 
         certificate-ttl: 1h
         anonymous-telemetry: 1
+
     - name: List nodes (tsh)
       run: tsh ls
     - name: List nodes (tctl)
