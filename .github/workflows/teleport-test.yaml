@@ -22,7 +22,15 @@ jobs:
       with:
         version: auto
         proxy: teleport.exploravis.mywire.org:443
-
+        
+    - name: Authenticate with Teleport for full access
+      uses: teleport-actions/auth@v2
+      with:
+        proxy: teleport.exploravis.mywire.org:443
+        token: github-actions-token
+        credential-ttl: 1h
+        anonymous-telemetry: 1
+        
     - name: Authorize against Teleport and get Kubeconfig
       id: auth
       uses: teleport-actions/auth-k8s@v2
