@@ -37,4 +37,4 @@ jobs:
       run: kubectl apply -f argocd/bootstrap/ --validate=false
 
     - name: Add ArgoCD app to Teleport  
-      run: tctl create -f argocd/teleport/argo-cd-teleport-app.yaml
+      run: tctl create -f argocd/teleport/argo-cd-teleport-app.yaml --proxy=teleport.exploravis.mywire.org:443
