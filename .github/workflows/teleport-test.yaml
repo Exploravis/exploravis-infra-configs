@@ -33,7 +33,7 @@ jobs:
       run: tsh kube login default 
 
     - name: Bootstrap ArgoCD 
-      run: tsh kubectl apply -f argocd/bootstrap/
+      run: tsh kubectl apply -f argocd/bootstrap/ --validate=false
 
     - name: Add ArgoCD app to Teleport  
       run: tctl create -f argocd/teleport/argo-cd-teleport-app.yaml
