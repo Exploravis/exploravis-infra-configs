@@ -30,7 +30,7 @@ jobs:
         anonymous-telemetry: 1
 
     - name: Connect to the default kubernetes cluster 
-      run: tsh kube connect default 
+      run: tsh kube login default 
 
     - name: Bootstrap ArgoCD 
       run: tsh kubectl apply -f argocd/bootstrap/
