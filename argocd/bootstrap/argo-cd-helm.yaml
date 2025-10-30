@@ -1,0 +1,29 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: helm-install-argocd
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      serviceAccountName: helm-job
+      restartPolicy: Never
+      containers:
+        - name: helm
+          image: alpine/helm
+          command: ["helm"]
+          args: [
+            "upgrade", "--install", "argocd",
+            "oci://ghcr.io/argoproj/argo-helm/argo-cd",
+            "--namespace", "argocd",
+            "--create-namespace",
+            "-f", "/config/values.yaml"
+          ]
+          volumeMounts:
+            - name: helm-values
+              mountPath: /config
+              readOnly: true
+      volumes:
+        - name: helm-values
+          configMap:
+            name: argocd-helm-values

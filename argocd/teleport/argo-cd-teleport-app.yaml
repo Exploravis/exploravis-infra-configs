@@ -1,0 +1,8 @@
+kind: app
+version: v3
+metadata:
+  name: argocd
+spec:
+  uri: http://127.0.0.1:32001
+  public_addr: "argocd.teleport.exploravis.mywire.org"
+  insecure_skip_verify: true

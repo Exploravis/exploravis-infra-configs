@@ -18,18 +18,22 @@ jobs:
       uses: teleport-actions/setup@v1
       with:
         version: auto
-        proxy: teleport.exploravis.ddns.net:443
+        proxy: teleport.exploravis.mywire.org:443
 
     - name: Fetch credentials using Machine ID
       id: auth
       uses: teleport-actions/auth@v2
       with:
-        proxy: teleport.exploravis.ddns.net:443
+        proxy: teleport.exploravis.mywire.org:443 
         token: github-actions-token 
-        certificate-ttl: 1h
+        credential-ttl: 1h
         anonymous-telemetry: 1
 
-    - name: List nodes (tsh)
-      run: tsh ls
-    - name: List nodes (tctl)
-      run: tctl nodes ls
+    - name: Connect to the default kubernetes cluster 
+      run: tsh kube connect default 
+
+    - name: Bootstrap ArgoCD 
+      run: tsh kubectl apply -f argocd/bootstrap/
+
+    - name: Add ArgoCD app to Teleport  
+      run: tctl create -f argocd/teleport/argo-cd-teleport-app.yaml

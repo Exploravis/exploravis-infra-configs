@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-helm-values
+  namespace: default
+data:
+  values.yaml: |
+    server:
+      service:
+        type: NodePort
+        nodePortHttp: 32000 
+        nodePortHttps: 32001 
+      extraArgs:
+        - --insecure      
+    controller:
+      extraArgs: []
+    repoServer:
+      resources:
+        limits:
+          cpu: "500m"
+          memory: "512Mi"
+        requests:
+          cpu: "250m"
+          memory: "256Mi"
+    rbac:
+      policy.default: role:admin
+      scopes: '[groups]'
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+  namespace: argocd
+data:
+  users.anonymous.enabled: "true"
+  
+  policy.csv: |
+    g, anonymous, role:admin
+    
