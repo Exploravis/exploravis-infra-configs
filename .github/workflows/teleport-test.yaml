@@ -41,9 +41,6 @@ jobs:
         anonymous-telemetry: 1
         kubernetes-cluster: default 
 
-    - name: Create argocd namespace 
-      run: kubectl create namespace argocd
-
     - name: Setup helm job service account 
       run: kubectl apply -f argocd/bootstrap/helm-job-sa.yaml --validate=false
 
