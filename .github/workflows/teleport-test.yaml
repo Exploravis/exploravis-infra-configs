@@ -53,6 +53,9 @@ jobs:
     - name: Launch argocd helm job 
       run: kubectl apply -f argocd/bootstrap/argocd-helm-job.yaml --validate=false
 
+    - name: Deploy root ApplicationSet 
+      run: kubectl apply -f argocd/config/root-application.yaml
+
     - name: Add ArgoCD app to Teleport  
       env:
         TELEPORT_PROXY: teleport.exploravis.mywire.org:443
