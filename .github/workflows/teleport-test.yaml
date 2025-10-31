@@ -41,8 +41,17 @@ jobs:
         anonymous-telemetry: 1
         kubernetes-cluster: default 
 
-    - name: Bootstrap ArgoCD 
-      run: kubectl apply -f argocd/bootstrap/ --validate=false
+    - name: Setup helm job service account 
+      run: kubectl apply -f argocd/bootstrap/helm-job-sa.yaml --validate=false
+
+    - name: Create argocd-cm ConfigMap
+      run: kubectl apply -f argocd/bootstrap/argocd-cm.yaml --validate=false
+
+    - name: Create argocd helm values ConfigMap  
+      run: kubectl apply -f argocd/bootstrap/argocd-helm-values.yaml --validate=false
+
+    - name: Launch argocd helm job 
+      run: kubectl apply -f argocd/bootstrap/argocd-helm-job.yaml --validate=false
 
     - name: Add ArgoCD app to Teleport  
       env:

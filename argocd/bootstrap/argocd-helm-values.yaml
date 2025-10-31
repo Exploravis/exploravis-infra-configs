@@ -25,15 +25,3 @@ data:
     rbac:
       policy.default: role:admin
       scopes: '[groups]'
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: argocd-cm
-  namespace: argocd
-data:
-  users.anonymous.enabled: "true"
-  
-  policy.csv: |
-    g, anonymous, role:admin
-    
