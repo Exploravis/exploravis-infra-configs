@@ -5,6 +5,8 @@ metadata:
   namespace: default
 data:
   values.yaml: |
+    applicationSet:
+      enabled: true
     server:
       service:
         type: NodePort
