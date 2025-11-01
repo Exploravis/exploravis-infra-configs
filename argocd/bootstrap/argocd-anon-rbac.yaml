@@ -1,0 +1,11 @@
+# This will give anonymous users full admin access
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-rbac-cm
+  namespace: argocd
+data:
+  policy.default: role:admin
+  policy.csv: |
+    g, anonymous, role:admin
+

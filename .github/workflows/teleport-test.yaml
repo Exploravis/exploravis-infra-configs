@@ -1,7 +1,4 @@
 on:
-  push:
-    branches:
-    - main
   workflow_dispatch:
 jobs:
   helm-argocd:
@@ -53,6 +50,8 @@ jobs:
     - name: Create argocd-cm ConfigMap
       run: kubectl apply -f argocd/bootstrap/argocd-cm.yaml --validate=false
 
+    - name: Create ArgoCD anon user ConfigMap
+      run: kubectl apply -f argocd/bootstrap/argocd-anon-rbac.yaml --validate=false
 
     - name: Deploy root ApplicationSet 
       run: kubectl apply -f argocd/config/root-application.yaml
