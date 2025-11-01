@@ -4,11 +4,11 @@ on:
     - main
   workflow_dispatch:
 jobs:
-  demo:
+  helm-argocd:
     permissions:
       id-token: write
       contents: read
-    name: teleport
+    name: argocd-install 
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
@@ -44,14 +44,15 @@ jobs:
     - name: Setup helm job service account 
       run: kubectl apply -f argocd/bootstrap/helm-job-sa.yaml --validate=false
 
-    - name: Create argocd-cm ConfigMap
-      run: kubectl apply -f argocd/bootstrap/argocd-cm.yaml --validate=false
-
     - name: Create argocd helm values ConfigMap  
       run: kubectl apply -f argocd/bootstrap/argocd-helm-values.yaml --validate=false
 
     - name: Launch argocd helm job 
       run: kubectl apply -f argocd/bootstrap/argocd-helm-job.yaml --validate=false
+
+    - name: Create argocd-cm ConfigMap
+      run: kubectl apply -f argocd/bootstrap/argocd-cm.yaml --validate=false
+
 
     - name: Deploy root ApplicationSet 
       run: kubectl apply -f argocd/config/root-application.yaml
