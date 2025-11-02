@@ -22,7 +22,8 @@ api:
 ingressRoute:
   dashboard:
     enabled: true
-    entryPoints: ["traefik"]
+    entryPoints: ["web"]  
+    matchRule: PathPrefix(`/dashboard`) || PathPrefix(`/api`)
 
 service:
   enabled: true
