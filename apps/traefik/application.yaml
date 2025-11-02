@@ -6,7 +6,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "0"
 spec:
-  project: exploravis
+  project: default 
   source:
     repoURL: https://traefik.github.io/charts
     chart: traefik
