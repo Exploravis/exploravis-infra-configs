@@ -29,9 +29,20 @@ service:
   type: NodePort
 
 ports:
+  web:
+    port: 8000
+    expose: 
+      default: true
+    exposedPort: 80
+  websecure:
+    port: 8443
+    expose:
+      default: true
+    exposedPort: 443
   traefik:
     port: 8080
-    expose: true
+    expose:
+      default: true    # This should be an object, not a boolean
     exposedPort: 8080
 
 resources:
