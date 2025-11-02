@@ -5,6 +5,7 @@ metadata:
   namespace: argocd
 data:
   users.anonymous.enabled: "true"
+  kustomize.buildOptions: --enable-helm
   
   policy.csv: |
     g, anonymous, role:admin

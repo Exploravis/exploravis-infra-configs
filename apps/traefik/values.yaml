@@ -17,14 +17,22 @@ affinity:
                 - "true"
 api:
   dashboard: true
+  insecure: true
+
+ingressRoute:
+  dashboard:
+    enabled: true
+    entryPoints: ["traefik"]
 
 service:
   enabled: true
   type: NodePort
 
-ingressRoute:
-  dashboard:
-    enabled: true
+ports:
+  traefik:
+    port: 8080
+    expose: true
+    exposedPort: 8080
 
 resources:
   limits:
