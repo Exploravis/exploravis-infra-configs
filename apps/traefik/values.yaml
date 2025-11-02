@@ -1,5 +1,7 @@
 deployment:
+  enabled: false
   kind: DaemonSet
+  replicas: 1
 
 affinity:
   nodeAffinity:
@@ -10,17 +12,11 @@ affinity:
               operator: NotIn
               values:
                 - "true"
-            # - key: node-role.kubernetes.io/control-plane
-            #   operator: NotIn
-            #   values:
-            #     - "true"
+            - key: node-role.kubernetes.io/control-plane
+              operator: NotIn
+              values:
+                - "true"
 
-service:
-  enabled: true
-  type: LoadBalancer
-  annotations: {}
-  spec:
-    externalTrafficPolicy: Local
 
 ingressRoute:
   dashboard:
