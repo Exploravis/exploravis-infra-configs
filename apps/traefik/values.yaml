@@ -1,0 +1,35 @@
+deployment:
+  kind: DaemonSet
+
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: node-role.kubernetes.io/master
+              operator: NotIn
+              values:
+                - "true"
+            # - key: node-role.kubernetes.io/control-plane
+            #   operator: NotIn
+            #   values:
+            #     - "true"
+
+service:
+  enabled: true
+  type: LoadBalancer
+  annotations: {}
+  spec:
+    externalTrafficPolicy: Local
+
+ingressRoute:
+  dashboard:
+    enabled: true
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 200Mi
+  requests:
+    cpu: 100m
+    memory: 100Mi
