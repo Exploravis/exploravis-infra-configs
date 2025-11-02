@@ -45,7 +45,9 @@ jobs:
       run: kubectl apply -f argocd/bootstrap/argocd-helm-values.yaml --validate=false
 
     - name: Launch argocd helm job 
-      run: kubectl apply -f argocd/bootstrap/argocd-helm-job.yaml --validate=false
+      run: |
+        kubectl apply -f argocd/bootstrap/argocd-helm-job.yaml --validate=false
+        kubectl wait --for=condition=complete job/helm-install-argocd --timeout=600s
 
     - name: Create argocd-cm ConfigMap
       run: kubectl apply -f argocd/bootstrap/argocd-cm.yaml --validate=false
