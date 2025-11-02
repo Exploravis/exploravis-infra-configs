@@ -1,7 +1,6 @@
 deployment:
-  enabled: false
-  kind: DaemonSet
-  replicas: 1
+  enabled: true
+  kind: DaemonSet  
 
 affinity:
   nodeAffinity:
@@ -17,6 +16,11 @@ affinity:
               values:
                 - "true"
 
+service:
+  enabled: true
+  type: LoadBalancer
+  spec:
+    externalTrafficPolicy: Local
 
 ingressRoute:
   dashboard:
@@ -29,3 +33,4 @@ resources:
   requests:
     cpu: 100m
     memory: 100Mi
+
