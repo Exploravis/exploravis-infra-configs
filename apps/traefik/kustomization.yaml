@@ -9,3 +9,5 @@ helmCharts:
     repo: https://traefik.github.io/charts
     releaseName: traefik
     valuesFile: values.yaml
+    valuesInline:
+      installCRDs: true 
