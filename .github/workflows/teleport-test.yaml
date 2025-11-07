@@ -58,6 +58,9 @@ jobs:
     - name: Deploy root ApplicationSet 
       run: kubectl apply -f argocd/config/root-application.yaml
 
+    - name: Deploy root infra ApplicationSet 
+      run: kubectl apply -f argocd/config/infra-application.yaml
+
     - name: Add ArgoCD app to Teleport  
       env:
         TELEPORT_PROXY: teleport.exploravis.mywire.org:443

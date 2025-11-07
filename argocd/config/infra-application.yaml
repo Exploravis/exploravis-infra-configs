@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cluster-infra
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: 'https://github.com/Exploravis/exploravis-infra-configs.git'
+        revision: main
+        directories:
+          - path: 'infra/*'
+  template:
+    metadata:
+      name: '{{path.basename}}'
+      annotations:
+        argocd.argoproj.io/sync-wave: "0"
+        argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    spec:
+      project: default
+      source:
+        repoURL: 'https://github.com/Exploravis/exploravis-infra-configs.git'
+        targetRevision: main
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
