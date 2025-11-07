@@ -15,7 +15,6 @@ affinity:
               operator: NotIn
               values:
                 - "true"
-
 api:
   dashboard: true
   insecure: true
@@ -23,8 +22,8 @@ api:
 ingressRoute:
   dashboard:
     enabled: true
-    entryPoints: ["traefik"]  # Changed from "web" to "traefik"
-    matchRule: (PathPrefix(`/dashboard`) || PathPrefix(`/api`))  # Fixed syntax
+    entryPoints: ["web"]  
+    matchRule: (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
 
 service:
   enabled: true
@@ -40,7 +39,6 @@ ports:
   traefik:
     port: 8080
     hostPort: 8080
-    expose: true  # Make sure this is exposed
 
 resources:
   limits:
@@ -49,3 +47,4 @@ resources:
   requests:
     cpu: 100m
     memory: 100Mi
+
