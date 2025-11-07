@@ -15,6 +15,7 @@ spec:
       name: '{{path.basename}}'
       annotations:
         argocd.argoproj.io/kustomize-build-options: "--enable-helm"
+        argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     spec:
       project: default
       source:
