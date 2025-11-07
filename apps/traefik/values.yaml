@@ -19,11 +19,11 @@ api:
   dashboard: true
   insecure: true
 
-ingressRoute:
-  dashboard:
-    enabled: true
-    entryPoints: ["web"]  
-    matchRule: PathPrefix(`/dashboard`) || PathPrefix(`/api`)
+# ingressRoute:
+#   dashboard:
+#     enabled: true
+#     entryPoints: ["web"]  
+#     matchRule: PathPrefix(`/dashboard`) || PathPrefix(`/api`)
 
 service:
   enabled: true
