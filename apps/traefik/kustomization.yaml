@@ -4,10 +4,11 @@ kind: Kustomization
 namespace: traefik
 
 helmCharts:
+helmCharts:
   - name: traefik
     version: 37.2.0
-    repo: https://traefik.github.io/charts
+    repo: https://traefik.github.io/charts  
     releaseName: traefik
     valuesFile: values.yaml
     valuesInline:
-      installCRDs: true 
+      installCRDs: true
