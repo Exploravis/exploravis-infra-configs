@@ -40,6 +40,8 @@ ports:
     port: 8080
     hostPort: 8080
 
+additionalArguments:
+  - "--api.insecure=true"
 resources:
   limits:
     cpu: 200m
