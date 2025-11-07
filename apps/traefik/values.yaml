@@ -29,6 +29,7 @@ service:
   enabled: true
   type: ClusterIP
 
+
 ports:
   web:
     port: 80

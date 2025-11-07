@@ -13,6 +13,8 @@ spec:
   template:
     metadata:
       name: '{{path.basename}}'
+      annotations:
+        argocd.argoproj.io/kustomize-build-options: "--enable-helm"
     spec:
       project: default
       source:
