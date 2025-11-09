@@ -9,7 +9,7 @@ spec:
     - host: staging.exploravis.mywire.org
       http:
         paths:
-          - path: /
+          - path: /dump-test
             pathType: Prefix
             backend:
               service:
