@@ -17,7 +17,8 @@ spec:
             "oci://ghcr.io/argoproj/argo-helm/argo-cd",
             "--namespace", "argocd",
             "--create-namespace",
-            "-f", "/config/values.yaml"
+            "-f", "/config/values.yaml",
+            "--debug"
           ]
           volumeMounts:
             - name: helm-values
