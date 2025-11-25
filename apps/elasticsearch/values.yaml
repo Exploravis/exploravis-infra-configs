@@ -22,7 +22,6 @@ resources:
 
 volumeClaimTemplate:
   accessModes: [ "ReadWriteOnce" ]
-  storageClassName: "standard"
   resources:
     requests:
       storage: 5Gi
@@ -57,5 +56,6 @@ antiAffinity: "soft"
 
 secret:
   enabled: false
+
 
 protocol: http
