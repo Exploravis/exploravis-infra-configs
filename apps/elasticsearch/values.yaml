@@ -1,0 +1,61 @@
+clusterName: "elasticsearch-cluster"
+replicas: 1
+
+image: "docker.elastic.co/elasticsearch/elasticsearch"
+imageTag: "8.11.3"
+
+nodeGroup: "master" 
+roles:
+  - master
+  - data
+  - ingest
+
+esJavaOpts: "-Xms1g -Xmx1g"
+
+resources:
+  requests:
+    cpu: "500m"
+    memory: "1.5Gi"
+  limits:
+    cpu: "2"
+    memory: "3Gi" 
+
+volumeClaimTemplate:
+  accessModes: [ "ReadWriteOnce" ]
+  storageClassName: "standard"
+  resources:
+    requests:
+      storage: 5Gi
+
+sysctlInitContainer:
+  enabled: false
+
+
+extraEnvs:
+  - name: ELASTIC_PASSWORD
+    value: "changeme"
+  - name: xpack.security.enabled
+    value: "false"
+  - name: xpack.security.http.ssl.enabled
+    value: "false"
+
+esConfig:
+  elasticsearch.yml: |
+    cluster.name: elasticsearch-cluster
+    node.name: ${HOSTNAME}
+    network.host: 0.0.0.0
+    node.store.allow_mmap: false
+
+service:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 9200
+      targetPort: 9200
+
+antiAffinity: "soft"
+
+secret:
+  enabled: false
+
+protocol: http
