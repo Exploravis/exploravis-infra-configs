@@ -22,7 +22,7 @@ resources:
 
 volumeClaimTemplate:
   accessModes: [ "ReadWriteOnce" ]
-  storageClassName: ""
+  storageClassName: "local-path"
   resources:
     requests:
       storage: 5Gi
@@ -60,4 +60,5 @@ secret:
 
 
 protocol: http
+
 
