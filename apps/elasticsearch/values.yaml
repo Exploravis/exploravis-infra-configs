@@ -22,7 +22,7 @@ resources:
 
 volumeClaimTemplate:
   accessModes: [ "ReadWriteOnce" ]
-  storageClassName: "local-path"
+  storageClassName: "standard"
   resources:
     requests:
       storage: 5Gi
@@ -33,7 +33,7 @@ sysctlInitContainer:
 
 extraEnvs:
   - name: ELASTIC_PASSWORD
-    value: "changeme"
+    value: "root"
   - name: xpack.security.enabled
     value: "false"
   - name: xpack.security.http.ssl.enabled
