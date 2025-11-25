@@ -4,32 +4,31 @@ replicas: 1
 image: "docker.elastic.co/elasticsearch/elasticsearch"
 imageTag: "8.11.3"
 
-nodeGroup: "master" 
+nodeGroup: "master"
 roles:
   - master
   - data
   - ingest
 
-esJavaOpts: "-Xms1g -Xmx1g"
+esJavaOpts: "-Xms512m -Xmx512m"
 
 resources:
   requests:
-    cpu: "500m"
-    memory: "1.5Gi"
+    cpu: "250m"
+    memory: "1Gi"
   limits:
-    cpu: "2"
-    memory: "3Gi" 
+    cpu: "1"
+    memory: "1.5Gi"
 
 volumeClaimTemplate:
-  accessModes: [ "ReadWriteOnce" ]
-  storageClassName: "standard"
+  accessModes: ["ReadWriteOnce"]
+  storageClassName: "standard" 
   resources:
     requests:
       storage: 5Gi
 
 sysctlInitContainer:
   enabled: false
-
 
 extraEnvs:
   - name: ELASTIC_PASSWORD
@@ -38,6 +37,8 @@ extraEnvs:
     value: "false"
   - name: xpack.security.http.ssl.enabled
     value: "false"
+  - name: discovery.type
+    value: single-node
 
 esConfig:
   elasticsearch.yml: |
@@ -58,7 +59,11 @@ antiAffinity: "soft"
 secret:
   enabled: false
 
-
 protocol: http
 
-
+readinessProbe:
+  initialDelaySeconds: 30
+  timeoutSeconds: 10
+  periodSeconds: 10
+  successThreshold: 1
+  failureThreshold: 5
