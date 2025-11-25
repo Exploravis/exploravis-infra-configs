@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: elasticsearch
 helmCharts:
   - name: elasticsearch
+    version: 8.5.1
     repo: https://helm.elastic.co
     releaseName: elastic/elasticsearch
     valuesFile: values.yaml
