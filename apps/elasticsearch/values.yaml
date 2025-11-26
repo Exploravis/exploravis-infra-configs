@@ -7,6 +7,13 @@ imageTag: "8.11.3"
 
 nodeGroup: "master"
 
+nodeAffinity:
+  requiredDuringSchedulingIgnoredDuringExecution:
+    nodeSelectorTerms:
+      - matchExpressions:
+          - key: "node-role.kubernetes.io/master"
+            operator: "DoesNotExist"
+
 roles:
   - master
   - data
