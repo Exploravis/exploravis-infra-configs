@@ -12,15 +12,16 @@ roles:
   - data
   - ingest
 
-esJavaOpts: "-Xms256m -Xmx256m"
 
 resources:
   requests:
-    cpu: "500m"
-    memory: "2Gi"
+    memory: "512Mi"
+    cpu: "250m"
   limits:
+    memory: "1Gi"
     cpu: "1"
-    memory: "3Gi"
+
+esJavaOpts: "-Xms256m -Xmx256m"
 
 volumeClaimTemplate:
   accessModes: ["ReadWriteOnce"]
