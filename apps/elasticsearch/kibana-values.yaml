@@ -12,5 +12,8 @@ resources:
     cpu: "1"
     memory: "512Mi"
 
+tls:
+  enabled: false
+
 service:
   type: LoadBalancer 
