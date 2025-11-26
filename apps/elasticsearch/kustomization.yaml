@@ -7,4 +7,7 @@ helmCharts:
     repo: https://helm.elastic.co
     releaseName: elasticsearch
     valuesFile: values.yaml
-
+  - name: kibana 
+    repo: https://helm.elastic.co
+    releaseName: kibana
+    valuesFile: kibana-values.yaml

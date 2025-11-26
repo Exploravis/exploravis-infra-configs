@@ -1,0 +1,16 @@
+imageTag: "8.11.3"
+
+elasticsearchHosts: "http://elasticsearch-cluster-master:9200"
+
+replicas: 1
+
+resources:
+  requests:
+    cpu: "200m"
+    memory: "256Mi"
+  limits:
+    cpu: "1"
+    memory: "512Mi"
+
+service:
+  type: LoadBalancer 
