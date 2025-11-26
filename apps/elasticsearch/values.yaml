@@ -36,6 +36,8 @@ sysctlInitContainer:
   enabled: false
 
 extraEnvs:
+  - name: cluster.initial_master_nodes 
+    value: ""
   - name: ELASTIC_PASSWORD
     value: "root"
   - name: discovery.type
