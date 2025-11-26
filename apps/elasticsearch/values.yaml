@@ -16,11 +16,11 @@ esJavaOpts: "-Xms256m -Xmx256m"
 
 resources:
   requests:
-    cpu: "250m"
-    memory: "512Mi"
+    cpu: "500m"
+    memory: "2Gi"
   limits:
     cpu: "1"
-    memory: "1Gi"
+    memory: "3Gi"
 
 volumeClaimTemplate:
   accessModes: ["ReadWriteOnce"]
@@ -66,6 +66,6 @@ protocol: http
 readinessProbe:
   initialDelaySeconds: 30
   timeoutSeconds: 10
-  periodSeconds: 10
+  periodSeconds: 15
   successThreshold: 1
-  failureThreshold: 5
+  failureThreshold: 10
