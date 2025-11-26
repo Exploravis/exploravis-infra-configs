@@ -1,13 +1,3 @@
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: hq-strip-prefix
-  namespace: elasticsearch
-spec:
-  stripPrefix:
-    prefixes:
-      - /hq
----
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -15,7 +5,6 @@ metadata:
   namespace: elasticsearch
   annotations:
     kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.middlewares: elasticsearch/hq-strip-prefix@kubernetescrd
 spec:
   rules:
     - host: staging.exploravis.mywire.org

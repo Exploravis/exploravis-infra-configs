@@ -21,3 +21,5 @@ spec:
           env:
             - name: HQ_DEFAULT_URL
               value: "http://elasticsearch-cluster-master.elasticsearch.svc:9200"
+            - name: BASE_PATH
+              value: /hq
