@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elasticsearch-hq
+  namespace: elasticsearch
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: elasticsearch-hq
+  template:
+    metadata:
+      labels:
+        app: elasticsearch-hq
+    spec:
+      containers:
+        - name: hq
+          image: elastichq/elasticsearch-hq
+          ports:
+            - containerPort: 5000
+          env:
+            - name: HQ_DEFAULT_URL
+              value: "http://elasticsearch-cluster-master.elasticsearch.svc:9200"
