@@ -1,28 +1,30 @@
 clusterName: "elasticsearch-cluster"
+
 replicas: 1
 
 image: "docker.elastic.co/elasticsearch/elasticsearch"
 imageTag: "8.11.3"
 
 nodeGroup: "master"
+
 roles:
   - master
   - data
   - ingest
 
-esJavaOpts: "-Xms512m -Xmx512m"
+esJavaOpts: "-Xms256m -Xmx256m"
 
 resources:
   requests:
     cpu: "250m"
-    memory: "1Gi"
+    memory: "512Mi"
   limits:
     cpu: "1"
-    memory: "1.5Gi"
+    memory: "1Gi"
 
 volumeClaimTemplate:
   accessModes: ["ReadWriteOnce"]
-  storageClassName: "standard" 
+  storageClassName: "local-path"   
   resources:
     requests:
       storage: 5Gi
@@ -33,12 +35,12 @@ sysctlInitContainer:
 extraEnvs:
   - name: ELASTIC_PASSWORD
     value: "root"
+  - name: discovery.type
+    value: "single-node"
   - name: xpack.security.enabled
     value: "false"
   - name: xpack.security.http.ssl.enabled
     value: "false"
-  - name: discovery.type
-    value: single-node
 
 esConfig:
   elasticsearch.yml: |
