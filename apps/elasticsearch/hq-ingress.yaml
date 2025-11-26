@@ -5,6 +5,7 @@ metadata:
   namespace: elasticsearch
   annotations:
     kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/rule-type: PathPrefixStrip
 spec:
   rules:
     - host: staging.exploravis.mywire.org
