@@ -21,7 +21,7 @@ resources:
     memory: "1Gi"
     cpu: "1"
 
-clusterInitialMasterNodes: []
+# clusterInitialMasterNodes: []
 
 esJavaOpts: "-Xms512m -Xmx512m"
 
@@ -35,13 +35,15 @@ volumeClaimTemplate:
 sysctlInitContainer:
   enabled: false
 
+singleNode: true
+
 extraEnvs:
-  - name: cluster.initial_master_nodes 
-    value: ""
+  # - name: cluster.initial_master_nodes 
+  #   value: ""
   - name: ELASTIC_PASSWORD
     value: "root"
-  - name: discovery.type
-    value: "single-node"
+  # - name: discovery.type
+  #   value: "single-node"
   - name: xpack.security.enabled
     value: "false"
   - name: xpack.security.http.ssl.enabled
