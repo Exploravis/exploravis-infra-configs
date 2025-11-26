@@ -21,6 +21,8 @@ resources:
     memory: "1Gi"
     cpu: "1"
 
+clusterInitialMasterNodes: []
+
 esJavaOpts: "-Xms512m -Xmx512m"
 
 volumeClaimTemplate:
