@@ -6,7 +6,7 @@ metadata:
     kubernetes.io/ingress.class: traefik
 spec:
   rules:
-    - host: staging.exploravis.mywire.org
+    - host: dev-exploravis.mywire.org
       http:
         paths:
           - path: /dump-test

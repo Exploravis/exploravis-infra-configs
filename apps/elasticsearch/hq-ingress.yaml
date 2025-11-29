@@ -1,13 +1,3 @@
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: hq-replace-path
-  namespace: elasticsearch
-spec:
-  replacePathRegex:
-    regex: ^/hq(.*)
-    replacement: /$2
----
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -15,13 +5,12 @@ metadata:
   namespace: elasticsearch
   annotations:
     kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.middlewares: elasticsearch/hq-replace-path@kubernetescrd
 spec:
   rules:
-    - host: staging.exploravis.mywire.org
+    - host: hq.dev-exploravis.mywire.org
       http:
         paths:
-          - path: /hq
+          - path: /
             pathType: Prefix
             backend:
               service:
