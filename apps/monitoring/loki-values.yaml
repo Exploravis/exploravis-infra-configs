@@ -1,3 +1,5 @@
+global:
+  deploymentMode: SingleBinary
 monitoring:
   selfMonitoring:
     enabled: false
