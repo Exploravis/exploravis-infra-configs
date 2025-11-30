@@ -36,4 +36,6 @@ dashboards:
     prometheus-overview:
       gnetId: 19972
       revision: 1
-      datasource: Prometheus
+      datasources:
+        - inputName: "DS_PROMETHEUS"
+          datasourceName: "Prometheus"
