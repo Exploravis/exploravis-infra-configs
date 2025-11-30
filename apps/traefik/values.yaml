@@ -42,6 +42,10 @@ ports:
 
 additionalArguments:
   - "--api.insecure=true"
+  - "--providers.kubernetescrd"
+  - "--providers.kubernetescrd.allowEmptyServices=true"
+  - "--providers.kubernetesingress"
+  - "--providers.kubernetesingress.allowEmptyServices=true"
 resources:
   limits:
     cpu: 200m
