@@ -1,0 +1,16 @@
+loki:
+  auth_enabled: false
+
+singleBinary:
+  enabled: true
+
+ingester:
+  wal:
+    enabled: true
+
+storage:
+  type: filesystem
+
+persistence:
+  enabled: true
+  size: 10Gi
