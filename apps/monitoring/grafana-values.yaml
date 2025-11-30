@@ -37,3 +37,13 @@ dashboards:
       gnetId: 1860
       revision: 31
       datasource: Prometheus
+
+    kubernetes-cluster-resources:
+      gnetId: 315
+      revision: 3
+      datasource: Prometheus
+
+    elasticsearch-overview:
+      gnetId: 4358
+      revision: 9
+      datasource: Prometheus
