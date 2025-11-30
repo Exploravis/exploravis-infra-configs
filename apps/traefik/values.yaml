@@ -40,9 +40,17 @@ ports:
     port: 8080
     hostPort: 8080
 
+providers:
+  kubernetesCRD:
+    enabled: true
+    allowCrossNamespace: true
+  kubernetesIngress:
+    enabled: true
+    allowExternalNameServices: true
+
 additionalArguments:
-  - "--api.insecure=true"
   - "--providers.kubernetescrd"
+  - "--api.insecure=true"
   - "--providers.kubernetescrd.allowEmptyServices=true"
   - "--providers.kubernetesingress"
   - "--providers.kubernetesingress.allowEmptyServices=true"
