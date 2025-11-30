@@ -6,6 +6,9 @@ monitoring:
 loki:
   auth_enabled: false
 
+test:
+  enabled: false
+
 singleBinary:
   enabled: true
 
