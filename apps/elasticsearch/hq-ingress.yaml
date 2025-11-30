@@ -1,25 +1,8 @@
-kind: Middleware
-apiVersion: traefik.containo.us/v1alpha1
-metadata:
-  name: elasticsearch-teleport-auth
-  namespace: elasticsearch
-spec:
-  forwardAuth:
-    address: https://teleport.exploravis.mywire.org/api/auth/forward
-    trustForwardHeader: true
-    authResponseHeaders:
-      - "X-Teleport-User"
-      - "X-Teleport-Roles"
-    authRequestHeaders:
-      - "X-Forwarded-User"
----
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: elasticsearch-hq-ingress
   namespace: elasticsearch
-  annotations:
-    traefik.ingress.kubernetes.io/router.middlewares: elasticsearch-teleport-auth@kubernetescrd
 spec:
   ingressClassName: traefik
   rules:
