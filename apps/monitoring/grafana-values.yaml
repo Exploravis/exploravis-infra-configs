@@ -1,0 +1,29 @@
+adminUser: admin
+adminPassword: admin
+service:
+  type: ClusterIP
+  port: 3000
+ingress:
+  enabled: false 
+persistence:
+  enabled: false
+
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+      - name: Prometheus
+        type: prometheus
+        url: http://prometheus-server.monitoring.svc.cluster.local:80
+        access: proxy
+        isDefault: true
+
+dashboards:
+  default:
+    prometheus-overview:
+      json: |
+        {
+          "dashboard": {
+            "id": 19972
+          }
+        }
