@@ -33,9 +33,7 @@ dashboardProviders:
 
 dashboards:
   default:
-    prometheus-overview:
-      gnetId: 19972
-      revision: 1
-      datasources:
-        - inputName: "DS_PROMETHEUS"
-          datasourceName: "Prometheus"
+    node-exporter-full:
+      gnetId: 1860
+      revision: 31
+      datasource: Prometheus
