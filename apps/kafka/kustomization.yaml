@@ -3,8 +3,8 @@ kind: Kustomization
 
 namespace: kafka
 helmCharts:
-  - name: bitnami
-    repo: https://charts.bitnami.com/bitnami                                                                         
-    releaseName: kafka
+  - name: redpanda 
+    repo: https://charts.redpanda.com
+    releaseName: redpanda 
     valuesFile: kafka-values.yaml
 
