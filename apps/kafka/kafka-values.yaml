@@ -5,3 +5,17 @@ storage:
   persistentVolume:
     enabled: true
     size: 2Gi
+
+tls:
+  enabled: true
+pandaproxy:
+  tls:
+    enabled: false
+
+schemaRegistry:
+  tls:
+    enabled: false
+
+external:
+  tls:
+    enabled: false
