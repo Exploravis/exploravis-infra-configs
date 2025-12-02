@@ -8,6 +8,42 @@ storage:
 
 tls:
   enabled: true
-http:
-  tls:
-    enabled: false
+
+listeners:
+  admin:
+    tls:
+      enabled: false
+    external:
+      default:
+        tls:
+          enabled: false
+
+  kafka:
+    tls:
+      enabled: false
+    external:
+      default:
+        tls:
+          enabled: false
+
+  rpc:
+    tls:
+      enabled: false
+
+  schemaRegistry:
+    enabled: false   
+    tls:
+      enabled: false
+    external:
+      default:
+        tls:
+          enabled: false
+
+  http:
+    tls:
+      enabled: false
+    external:
+      default:
+        tls:
+          enabled: false
+    enabled: false   # optional if you don't need PandaProxy
