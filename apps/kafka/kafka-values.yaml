@@ -39,6 +39,11 @@ listeners:
         tls:
           enabled: false
 
+console:
+  config:
+    kafka:
+      brokers:
+        - "redpanda-0.redpanda.kafka.svc.cluster.local:9093"
   http:
     tls:
       enabled: false
