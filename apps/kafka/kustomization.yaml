@@ -7,4 +7,5 @@ helmCharts:
     repo: https://charts.redpanda.com
     releaseName: redpanda 
     valuesFile: kafka-values.yaml
+    namespace: kafka
 
