@@ -8,14 +8,6 @@ storage:
 
 tls:
   enabled: true
-pandaproxy:
-  tls:
-    enabled: false
-
-schemaRegistry:
-  tls:
-    enabled: false
-
-external:
+http:
   tls:
     enabled: false
