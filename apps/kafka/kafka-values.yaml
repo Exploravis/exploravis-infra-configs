@@ -1,0 +1,16 @@
+replicaCount: 1
+
+zookeeper:
+  enabled: true
+  replicaCount: 1
+
+service:
+  type: LoadBalancer
+
+
+persistence:
+  enabled: true
+  size: 10Gi
+
+rbac:
+  create: true
