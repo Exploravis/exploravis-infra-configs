@@ -10,4 +10,4 @@ helmCharts:
 resources:
   - elasticsearch-hq-deployment.yaml
   - elasticsearch-hq-svc.yaml
-  # - hq-ingress.yaml
+  - hq-ingress.yaml
