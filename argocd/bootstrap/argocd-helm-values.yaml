@@ -19,11 +19,16 @@ data:
     repoServer:
       resources:
         limits:
+          cpu: "1000m"
+          memory: "1500Mi"
+        requests:
           cpu: "500m"
           memory: "512Mi"
-        requests:
-          cpu: "250m"
-          memory: "256Mi"
+      env:
+        - name: ARGOCD_HELM_OPTS
+          value: "--max-workers=1"
+        - name: ARGOCD_EXEC_TIMEOUT
+          value: "180s"
     rbac:
       policy.default: role:admin
       scopes: '[groups]'
