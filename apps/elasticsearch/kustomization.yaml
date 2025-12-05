@@ -7,7 +7,7 @@ helmCharts:
     repo: https://helm.elastic.co
     releaseName: elasticsearch
     valuesFile: values.yaml
-resources:
-  - elasticsearch-hq-deployment.yaml
-  - elasticsearch-hq-svc.yaml
-  - hq-ingress.yaml
+# resources:
+#   - elasticsearch-hq-deployment.yaml
+#   - elasticsearch-hq-svc.yaml
+#   - hq-ingress.yaml

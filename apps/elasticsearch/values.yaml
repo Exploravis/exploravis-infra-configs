@@ -83,3 +83,5 @@ readinessProbe:
   periodSeconds: 15
   successThreshold: 1
   failureThreshold: 15
+
+clusterHealthCheckParams: "wait_for_status=yellow&timeout=1s"
