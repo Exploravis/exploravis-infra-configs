@@ -45,7 +45,7 @@ listeners:
       default:
         tls:
           enabled: false
-    enabled: false   # optional if you don't need PandaProxy
+    enabled: true
 
 console:
   config:
