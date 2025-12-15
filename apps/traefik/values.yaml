@@ -24,6 +24,11 @@ ingressRoute:
     enabled: true
     entryPoints: ["web"]  
     matchRule: (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+entryPoints:
+  web:
+    address: ":80"
+  websecure:
+    address: ":443"
 
 service:
   enabled: true
