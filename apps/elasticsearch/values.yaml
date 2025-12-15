@@ -1,6 +1,5 @@
 clusterName: "elasticsearch-cluster"
 
-replicas: 1
 
 image: "docker.elastic.co/elasticsearch/elasticsearch"
 imageTag: "8.11.3"
@@ -13,6 +12,11 @@ nodeAffinity:
       - matchExpressions:
           - key: "node-role.kubernetes.io/master"
             operator: "DoesNotExist"
+          - key: "node-role.kubernetes.io/lowmem"
+            operator: "DoesNotExist"
+
+antiAffinity: "soft"
+antiAffinityTopologyKey: "kubernetes.io/hostname"
 
 roles:
   - master
@@ -26,7 +30,7 @@ resources:
     cpu: "200m"
   limits:
     memory: "1Gi"
-    cpu: "1"
+    cpu: "500m"
 
 # clusterInitialMasterNodes: []
 
@@ -42,7 +46,12 @@ volumeClaimTemplate:
 sysctlInitContainer:
   enabled: false
 
-singleNode: true
+replicas: 3
+minimumMasterNodes: 2
+# roles:
+#   - master
+# singleNode: true
+
 
 extraEnvs:
   # - name: cluster.initial_master_nodes 
@@ -62,6 +71,10 @@ esConfig:
     node.name: ${HOSTNAME}
     network.host: 0.0.0.0
     node.store.allow_mmap: false
+    cluster.initial_master_nodes:
+      - elasticsearch-cluster-master-0
+      - elasticsearch-cluster-master-1
+      - elasticsearch-cluster-master-2
 
 service:
   type: ClusterIP
